@@ -2,12 +2,15 @@
 file=$1
 while IFS= read -r line
 do
-#if $line == "" IFS= read -r line
-printf '%s\n' "$line"
-read mystring </dev/tty
-while [ "$line" != "$mystring" ];
+ 
+#printf '%s\n' "$line" 
+check=`echo $line | sed -e 's/^[[:space:]]*//'`
+echo $line
+read -r mystring </dev/tty
+while [ "$check" != "$mystring" ];
 do
-comm -23 <(echo $line | tr ' ' '\n' | sort) <(echo $mystring | tr ' ' '\n' | sort)
+comm -23 <(echo $check | tr ' ' '\n' | sort) <(echo $mystring | tr ' ' '\n' | sort)
+
 printf '%s\n' "Try again"
 
 read mystring </dev/tty
