@@ -7,10 +7,9 @@ printf '%s\n' "$line"
 read mystring </dev/tty
 while [ "$line" != "$mystring" ];
 do
-printf '%s\n' "$line"
-printf '%s\n' "$mystring"
+comm -23 <(echo $line | tr ' ' '\n' | sort) <(echo $mystring | tr ' ' '\n' | sort)
 printf '%s\n' "Try again"
-#diff <(echo "$line" ) <(echo "$mystring")
+
 read mystring </dev/tty
 done
 
