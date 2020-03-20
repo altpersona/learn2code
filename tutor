@@ -3,9 +3,11 @@ file=$1
 while IFS= read -r line
 do
 printf '%s\n' "$line"
-read mystring
+read mystring </dev/tty
 
-#if [ "$line" != "$mystring"]; then
-while 
+while [ "$line" != "$mystring" ];
+do
+read mystring </dev/tty
+done
 
 done <"$file"
