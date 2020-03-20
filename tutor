@@ -2,11 +2,15 @@
 file=$1
 while IFS= read -r line
 do
+#if $line == "" IFS= read -r line
 printf '%s\n' "$line"
 read mystring </dev/tty
-
 while [ "$line" != "$mystring" ];
 do
+printf '%s\n' "$line"
+printf '%s\n' "$mystring"
+printf '%s\n' "Try again"
+#diff <(echo "$line" ) <(echo "$mystring")
 read mystring </dev/tty
 done
 
