@@ -1,0 +1,21 @@
+The purpose of the Tutor script is enable practice coding.
+
+Running the script looks like `./tutor file.txt`
+
+The script reads a text file. Print line by line the files contents, prompts for user input for each line,
+compares each user input to the read line from the file and reprompts on discrepency. 
+
+The function goals for the script.
+
+Read file :$1 basically does this.
+
+Stop at end of refference file: unresovled, idk if its an actual problem.
+print lines from the file : While IPS seems to do this.
+
+Print line from file to screen : Printf is working
+
+Read user input : read is not working as is.
+
+Check input vs file content : idk if working or not.
+
+optional : count number of retries and give error count.
