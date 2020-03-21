@@ -8,6 +8,8 @@ print ("Name of the file: "), fo.name
 for line in fo.readlines():
     os.system('clear')    
     Newline = line.strip()  
+    if not Newline:
+        continue
     if line.startswith('#'):
         continue
     if line.startswith('//'):
