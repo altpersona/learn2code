@@ -1,10 +1,11 @@
 #include <stdio.h>
-#include <getfile.c>
-#include <closefile.c>
+#include "getfile.c"
+#include "closefile.c"
 char selection;
 
 
-int main () {
+int main () 
+{
 
     printf("Menu Options\n\n" );
     printf("View Existing Record [V]\n" );
@@ -13,7 +14,8 @@ int main () {
     printf("Exit [X]\n\n" );
     fgets(char &selection);
 
-   switch(selection) {
+   switch(selection) 
+    {
       case 'V' :
          printf("Viewing Existing Record\n" );
          getfile
