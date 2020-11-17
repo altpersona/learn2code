@@ -1,0 +1,27 @@
+#!/bin/bash
+file=$1
+while IFS= read -r line
+do
+clear
+#printf '%s\n' "$line" 
+#sed -e sed '/^$/d' <<< $line
+check=`echo $line | sed -e 's/^[[:space:]]*//'`
+#test for special characters
+#[[ $check = '^M']]  && continue
+#[[ $check = '\r']]  && continue
+#[[ $check = \#.* ]] && continue
+#[[ $check =~ //.* ]] && continue
+#[[ $check =~ /\*.* ]] && continue
+#
+echo $line
+read -r mystring </dev/tty
+while [ "$check" != "$mystring" ];
+do
+comm -23 <(echo $check | tr ' ' '\n' | sort) <(echo $mystring | tr ' ' '\n' | sort)
+
+printf '%s\n' "Try again"
+
+read mystring </dev/tty
+done
+
+done <"$file"
