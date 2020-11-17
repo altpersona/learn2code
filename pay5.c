@@ -27,17 +27,28 @@ void report()
         ot = ot + secondArray[loop];      
     }
     //
-    FILE * fp;
+    
+    const char* fileType = ".txt";
+    const int count = 1;
+    char name_buffer[512];
+    FILE* f = NULL;
+    int i;
+    for(i=0; i<count; i++)
+    {
+    //Print to character buffer
+    sprintf(name_buffer,"%s%s",badge,fileType);
+    f = fopen(name_buffer,"w");
+    /* Write Data */
 
-    fp = fopen ("%s.txt", "w+", badge);
-    fprintf(fp, "%s %s %s %d", "We", "are", "in", 2012);
-   
-    fclose(fp);
     //
     printf("Hours worked in period %6.2f \n", hours);
+    //fputs("Hours worked in period %6.2f \n", hours);
+    //fputs("Overtime worked in period %6.2f \n", ot);
     printf("Overtime worked in period %6.2f \n", ot);
-
+fclose(f);
+};
 return ;
+
 };
 int main()
 {
