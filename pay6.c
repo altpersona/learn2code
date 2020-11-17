@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 // ints 
-int i, k, dd , mm, yy, turn, day, month, year, grade,zone[1000],loop;
+int i, k,dd , mm, yy, turn, day, month, year, grade,zone[1000],loop;
 
 //chars
 char selection,hWArray[1000],hNWArray[1000];
@@ -13,9 +13,15 @@ char longturn[4][7]={"Error","First","Second","Third"};
 char badge[6], date[10],stringEID[12],stringHWiP[25],stringOWiP[25],stringEHW[],stringOH[], stringHW[], stringHNW[],stringZ[];
 
 //floats
-float base,hours,hoursHW,hoursHNW,ot,shift,incent,noninc,ot,sunpre,holw,holnw,gross,vac,bigArray[1000],secondArray[1000];
+float base,half,icf[5],pInc,increg[1000],shiftArry[3],rate,hours,hoursHW,hoursHNW,ot,shift,incent,noninc,ot,sunpre,holw,holnw,gross,vac,bigArray[1000],secondArray[1000],bigArrayBase[1000],bigArrayShift[1000];
 
 // value declarations
+float half =.5;
+float pInc=.5;
+float rate=26.65;
+float shiftArray[]= {0,.35,.5};
+float icf[]= {7.00,7.67,8.5,9.735,11.565};
+float increg[1000];
 int dd=0;
 int turn=1;
 int i=0;
@@ -28,6 +34,16 @@ char stringHW[]= "Holiday Worked";
 char stringHNW[]= "Holiday Not Worked";
 char stringZ[]= "Zone :";
 
+void firstThings()
+{
+    system("clear") /*clear output screen*/;
+    printf("Pay Calculator\n Version .006001\n" );
+    printf("Enter %s : ",stringEID);
+    scanf("%s", badge);
+    printf("Enter Week Ending date : ");
+    scanf("%s", date);
+    system("clear") /*clear output screen*/;
+};
 void inputData()
 {
 
@@ -54,6 +70,56 @@ void inputData()
             dd++;
             turn=1;
         };
+};
+void firstCalc()
+{
+{
+
+        while(dd<=0) //  7
+        {
+            while(turn<=1) //3
+            {
+                bigArrayBase[i]=bigArray[i]*rate;
+                if(turn==2)
+                {
+                bigArrayShift[i]=bigArray[i]*shiftArray[1];
+                };
+                if(turn==3)
+                {
+                bigArrayShift[i]=bigArray[i]*shiftArray[2];
+                };
+                increg[i]=bigArray[i]*pInc*icf[4];
+                /*
+                            
+                avgHR
+                sum:base +shift +inc.reg+holdW / hours
+
+                ot
+                hoursOT * avgHR * .5
+
+                sun.pre
+                sunday base * avgHR *.5
+
+                holdW 
+                holdRate * holdW
+
+                holdNW 
+                avgHR * holdNW
+
+                gross
+                base + shift + inc.reg + ot + sun.pre + holdW + holdNW
+
+                */
+                
+                i++;
+                turn++;
+                
+            };
+            dd++;
+            turn=1;
+        };
+};
+
 };
 void report()
 {
@@ -94,15 +160,10 @@ return ;
 };
 int main()
 {
-    system("clear") /*clear output screen*/;
-    printf("Pay Calculator\n Version .006001\n" );
-    printf("Enter %s : ",stringEID);
-    scanf("%s", badge);
-    printf("Enter Week Ending date : ");
-    scanf("%s", date);
-    system("clear") /*clear output screen*/;
-        //function 
-        inputData();
+
+//functions 
+    firstThings();
+    inputData();
     report();
    
     //system("clear") /*clear output screen*/;
