@@ -15,22 +15,22 @@ int dd=1;
 int turn=1;
 int i=0;
 
-int vbadge(int badge)
+int vbadge()
 {
-    printf("\nEnter Badge Number :");
-    scanf(" %d",&badge);
-    return badge;
-};
+  int badge = 0;
+  printf("\nEnter Badge Number :");
+  scanf(" %d", &badge);
+  return badge;
+}
 int main()
 {
     system("clear") /*clear output screen*/;
     printf("Pay Calculator\n\n" );
-    printf("\n\n");
-    vbadge(badge);
-    while (vbadge(badge)<=1 | vbadge(badge)>=1000)
+    int badge = vbadge();
+    while(badge <= 1 || badge >= 1000)
     {
-        vbadge(badge);
-    };
+        badge = vbadge();
+    }
     system("clear") /*clear output screen*/;
         while(dd<=7)
         {
