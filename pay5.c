@@ -8,7 +8,7 @@ int i, k, dd , mm, yy, turn, day, month, year, grade,zone[1000],loop;
 char selection,hWArray[1000],hNWArray[1000];
 char days[7][9]= {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
 char longturn[4][7]={"Error","First","Second","Third"};
-char badge[6];
+char badge[6], date[10];
 float base,hours,ot,shift,incent,noninc,ot,sunpre,holw,holnw,gross,vac,bigArray[1000],secondArray[1000];
 char badgeletter;
 
@@ -27,7 +27,7 @@ void report()
         ot = ot + secondArray[loop];      
     }
     //
-    
+    const char* dot = ".";
     const char* fileType = ".txt";
     const int count = 1;
     char name_buffer[512];
@@ -36,7 +36,7 @@ void report()
     for(i=0; i<count; i++)
     {
     //Print to character buffer
-    sprintf(name_buffer,"%s%s",badge,fileType);
+    sprintf(name_buffer,"%s%s%s%s%s",badge,dot,date,dot,fileType);
     f = fopen(name_buffer,"w");
     /* Write Data */
 
@@ -56,6 +56,8 @@ int main()
     printf("Pay Calculator\n Version .005002\n" );
     printf("Enter Employee ID : ");
     scanf("%s", badge);
+    printf("Enter Week Ending date : ");
+    scanf("%s", date);
     system("clear") /*clear output screen*/;
         while(dd<=0) //  7
         {
