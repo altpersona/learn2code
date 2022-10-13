@@ -1,0 +1,8 @@
+foo=400
+bar=200
+if [ "$foo" -eq "$bar" ];
+then
+echo yes;
+exit 0
+fi
+echo no;
